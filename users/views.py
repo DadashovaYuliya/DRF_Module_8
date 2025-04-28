@@ -42,22 +42,3 @@ class UserCreateAPIView(generics.CreateAPIView):
         user.save()
 
 
-
-# class UserListAPIView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = PaymentSerializer
-#
-#
-# class UserRetrieveAPIView(generics.RetrieveAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = PaymentSerializer
-#
-#
-# class UserUpdateAPIView(generics.UpdateAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = PaymentSerializer
-#
-#
-# class UserDestroyAPIView(generics.DestroyAPIView):
-#     queryset = User.objects.all()
-
