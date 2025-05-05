@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group, Permission, User
 
 
 class Command(BaseCommand):
-    help = 'Создает группу модераторов и назначает ей необходимые права доступа'
+    help = 'Создает группу модераторов и пользователей'
 
     def handle(self, *args, **kwargs):
         moderator_group = Group.objects.create(name='Moderator')
