@@ -1,7 +1,9 @@
 from rest_framework.serializers import ValidationError
 
-def validate_video_url(value):
-    site = 'youtube.com'
-    if site not in value.lower():
-        raise ValidationError('Использование сторонних сайтов запрещено. Приложите ссылку на youtube.com')
 
+def validate_video_url(value):
+    site = "youtube.com"
+    if site not in value.lower():
+        raise ValidationError(
+            "Использование сторонних сайтов запрещено. Приложите ссылку на youtube.com"
+        )

@@ -7,19 +7,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('materials', '0002_lesson_course'),
-        ('users', '0002_payment'),
+        ("materials", "0002_lesson_course"),
+        ("users", "0002_payment"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='payment',
-            name='payment_course',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='pay_course', to='materials.course', verbose_name='Оплаченный курс'),
+            model_name="payment",
+            name="payment_course",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="pay_course",
+                to="materials.course",
+                verbose_name="Оплаченный курс",
+            ),
         ),
         migrations.AlterField(
-            model_name='payment',
-            name='payment_lesson',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='pay_lesson', to='materials.lesson', verbose_name='Оплаченный урок'),
+            model_name="payment",
+            name="payment_lesson",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="pay_lesson",
+                to="materials.lesson",
+                verbose_name="Оплаченный урок",
+            ),
         ),
     ]

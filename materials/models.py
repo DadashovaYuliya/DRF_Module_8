@@ -11,7 +11,7 @@ class Course(models.Model):
     )
     description = models.TextField(verbose_name="Описание")
     owner = models.ForeignKey(
-        'users.User',
+        "users.User",
         on_delete=models.CASCADE,
         verbose_name="Владелец",
         blank=True,
@@ -43,7 +43,7 @@ class Lesson(models.Model):
         verbose_name="Курс",
     )
     owner = models.ForeignKey(
-        'users.User',
+        "users.User",
         on_delete=models.CASCADE,
         verbose_name="Владелец",
         blank=True,
@@ -60,7 +60,7 @@ class Lesson(models.Model):
 
 class Subscription(models.Model):
     user = models.ForeignKey(
-        'users.User',
+        "users.User",
         on_delete=models.CASCADE,
         verbose_name="Пользователь",
         blank=True,
@@ -78,4 +78,4 @@ class Subscription(models.Model):
         verbose_name_plural = "Подписки"
 
     def __str__(self):
-        return f'{self.user} {self.course}'
+        return f"{self.user} {self.course}"
