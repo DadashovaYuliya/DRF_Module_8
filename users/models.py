@@ -27,13 +27,14 @@ class User(AbstractUser):
     def __str__(self):
         return self.email
 
+
 class Payment(models.Model):
-    CASH = 'cash'
-    TRANSFER = 'transfer'
+    CASH = "cash"
+    TRANSFER = "transfer"
 
     PAYMENT_METHOD = {
-        CASH: 'Наличные',
-        TRANSFER: 'Перевод на счет',
+        CASH: "Наличные",
+        TRANSFER: "Перевод на счет",
     }
 
     user = models.ForeignKey(
@@ -41,27 +42,42 @@ class Payment(models.Model):
         on_delete=models.CASCADE,
         related_name="pay_user",
         verbose_name="Пользователь",
+        blank=True,
+        null=True,
     )
-    payment_date = models.DateTimeField(verbose_name='Дата оплаты', null=True, blank=True)
+    payment_date = models.DateTimeField(
+        verbose_name="Дата оплаты", null=True, blank=True
+    )
     payment_course = models.ForeignKey(
         Course,
         on_delete=models.CASCADE,
         related_name="pay_course",
-        verbose_name="Оплаченный курс", null=True, blank=True
+        verbose_name="Оплаченный курс",
+        null=True,
+        blank=True,
     )
     payment_lesson = models.ForeignKey(
         Lesson,
         on_delete=models.CASCADE,
         related_name="pay_lesson",
-        verbose_name="Оплаченный урок", null=True, blank=True
+        verbose_name="Оплаченный урок",
+        null=True,
+        blank=True,
     )
-    payment_amount = models.PositiveIntegerField(verbose_name='Сумма оплаты')
-    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD, verbose_name='Способ оплаты')
-
+    payment_amount = models.PositiveIntegerField(verbose_name="Сумма оплаты")
+    payment_method = models.CharField(
+        max_length=20, choices=PAYMENT_METHOD, verbose_name="Способ оплаты"
+    )
+    session_id = models.CharField(
+        max_length=255, verbose_name="Id сессии", null=True, blank=True
+    )
+    link = models.URLField(
+        max_length=400, verbose_name="Ссылка на оплату", null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Платеж"
         verbose_name_plural = "Платежи"
 
     def __str__(self):
-        return f'{self.user}-{self.payment_course}-{self.payment_amount}'
+        return f"Платеж пользователя {self.user} за {self.payment_course}-{self.payment_amount}"

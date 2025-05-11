@@ -1,10 +1,12 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-from users.models import Payment, User
+
 from materials.models import Course, Lesson
+from users.models import Payment, User
+
 
 class Command(BaseCommand):
-    help = 'Создание платежа'
+    help = "Создание платежа"
 
     def handle(self, *args, **kwargs):
         try:
@@ -20,10 +22,10 @@ class Command(BaseCommand):
                 payment_amount=1000,
                 payment_method=Payment.CASH,
             )
-            self.stdout.write(self.style.SUCCESS('Платеж сохранен'))
+            self.stdout.write(self.style.SUCCESS("Платеж сохранен"))
         except User.DoesNotExist:
-            self.stdout.write(self.style.ERROR('Пользователь не найден'))
+            self.stdout.write(self.style.ERROR("Пользователь не найден"))
         except Course.DoesNotExist:
-            self.stdout.write(self.style.ERROR('Курс не найден'))
+            self.stdout.write(self.style.ERROR("Курс не найден"))
         except Lesson.DoesNotExist:
-            self.stdout.write(self.style.ERROR('Урок не найден'))
+            self.stdout.write(self.style.ERROR("Урок не найден"))
