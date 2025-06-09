@@ -4,6 +4,26 @@
 
 Платформа для онлайн-обучения, в которой каждый желающий может размещать свои полезные материалы или курсы. 
 
+## Настройка сервера:
+
+1. Подключитесь к своему серверу:
+```
+ssh user_name@your_server_ip
+```
+2. Запустите обновления:
+```
+sudo apt update
+sudo apt upgrade
+```
+3. Настройте брандмауэр и откройте необходимые порты:
+```
+sudo ufw status
+sudo ufw enable
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
+```
+
 ## Установка:
 
 1. Клонируйте репозиторий:
@@ -17,7 +37,8 @@ pip install -r requirements.txt
 
 3. Настройте файл .env:
 ```
-Из шаблона .env.sample создайте файл .env:
+cd lms_api/
+nano .env
 
 Для работы с django укажите Ваш секретный ключ и статус debug
 SECRET_KEY=
