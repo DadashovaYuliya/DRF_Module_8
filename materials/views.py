@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from materials.models import Course, Lesson, Subscription
 from materials.paginators import MaterialsPagination
 from materials.serializers import CourseSerializer, LessonSerializer
+from materials.tasks import send_message_course_update
 from users.permissions import IsModer, IsOwner
 
 
@@ -37,6 +38,11 @@ class CourseViewSet(viewsets.ModelViewSet):
         context = super().get_serializer_context()
         context["request"] = self.request
         return context
+
+    def perform_update(self, serializer):
+
+        course = serializer.save()
+        send_message_course_update.delay(course.pk)
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

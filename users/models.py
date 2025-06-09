@@ -32,10 +32,11 @@ class Payment(models.Model):
     CASH = "cash"
     TRANSFER = "transfer"
 
-    PAYMENT_METHOD = {
-        CASH: "Наличные",
-        TRANSFER: "Перевод на счет",
-    }
+    PAYMENT_METHOD = [
+        (CASH, "Наличные"),
+        (TRANSFER, "Перевод на счет"),
+    ]
+
 
     user = models.ForeignKey(
         User,

@@ -30,6 +30,12 @@ POSTGRES_PASSWORD=
 POSTGRES_HOST=
 POSTGRES_PORT=
 ```
+
+4. Запустите контейнер:
+```
+docker-compose up
+```
+
 ## Приложения
 
 1. Приложение materials, в котором описаны модели Course и Lesson. 
