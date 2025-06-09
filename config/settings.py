@@ -158,10 +158,10 @@ AUTH_USER_MODEL = "users.User"
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL")
 
 # URL-адрес брокера результатов
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
+CELERY_RESULT_BACKEND = os.getenv("CELERY_RESULT_BACKEND")
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = TIME_ZONE
@@ -172,20 +172,20 @@ CELERY_TASK_TRACK_STARTED = True
 # Максимальное время на выполнение задачи
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-CELERY_BEAT_SCHEDULE = 'django_celery_beat_schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULE = "django_celery_beat_schedulers:DatabaseScheduler"
 
 CELERY_BEAT_SCHEDULE = {
-    'desactive_user': {
-        'task': 'materials.tasks.desactive_user',  # Путь к задаче
-        'schedule': timedelta(days=1),  # Расписание выполнения задачи
+    "desactive_user": {
+        "task": "materials.tasks.desactive_user",  # Путь к задаче
+        "schedule": timedelta(days=1),  # Расписание выполнения задачи
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True if os.getenv('EMAIL_USE_SSL') == 'True' else False
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+EMAIL_USE_SSL = True if os.getenv("EMAIL_USE_SSL") == "True" else False
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")

@@ -8,7 +8,7 @@
 
 1. Клонируйте репозиторий:
 ```
-git@github.com:DadashovaYuliya/DRG_Module_8.git
+git@github.com:DadashovaYuliya/DRF_Module_8.git
 ```
 2. Установите зависимости:
 ```
