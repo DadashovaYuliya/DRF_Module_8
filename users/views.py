@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.filters import OrderingFilter
 from rest_framework.permissions import AllowAny
 
-from users.models import Payment, User
+from users.models import Payment
 from users.serializers import PaymentSerializer, UserSerializer
 from users.services import create_stripe_price, create_stripe_sessions
 

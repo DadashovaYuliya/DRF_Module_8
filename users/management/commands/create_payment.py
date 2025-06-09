@@ -14,7 +14,7 @@ class Command(BaseCommand):
             course = Course.objects.get(pk=1)
             lesson = Lesson.objects.get(pk=1)
 
-            payment = Payment.objects.create(
+            Payment.objects.create(
                 user=user,
                 payment_date=timezone.now(),
                 payment_course=course,
