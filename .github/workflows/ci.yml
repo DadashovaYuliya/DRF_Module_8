@@ -92,5 +92,5 @@ jobs:
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/drf_module_8:${{ github.sha }}
           docker stop drf_module_8 || true
           docker rm drf_module_8 || true
-          docker run -d --name drf_module_8 --env-file .env -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/drf_module_8:${{ github.sha }}
+          docker run -d --name drf_module_8 --env-file .env -p 8080:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/drf_module_8:${{ github.sha }}
           EOF
