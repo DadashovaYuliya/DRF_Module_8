@@ -87,6 +87,8 @@ jobs:
       - name: Deploy to Server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+          echo "${{ secrets.ENV_FILE }}" > .env
+
           docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/drf_module_8:${{ github.sha }}
           docker stop drf_module_8 || true
           docker rm drf_module_8 || true
