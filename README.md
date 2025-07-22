@@ -4,11 +4,31 @@
 
 Платформа для онлайн-обучения, в которой каждый желающий может размещать свои полезные материалы или курсы. 
 
+## Настройка сервера:
+
+1. Подключитесь к своему серверу:
+```
+ssh user_name@your_server_ip
+```
+2. Запустите обновления:
+```
+sudo apt update
+sudo apt upgrade
+```
+3. Настройте брандмауэр и откройте необходимые порты:
+```
+sudo ufw status
+sudo ufw enable
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 22/tcp
+```
+
 ## Установка:
 
 1. Клонируйте репозиторий:
 ```
-git@github.com:DadashovaYuliya/DRG_Module_8.git
+git@github.com:DadashovaYuliya/DRF_Module_8.git
 ```
 2. Установите зависимости:
 ```
@@ -17,7 +37,8 @@ pip install -r requirements.txt
 
 3. Настройте файл .env:
 ```
-Из шаблона .env.sample создайте файл .env:
+cd lms_api/
+nano .env
 
 Для работы с django укажите Ваш секретный ключ и статус debug
 SECRET_KEY=
@@ -36,6 +57,15 @@ POSTGRES_PORT=
 docker-compose up
 ```
 
+5. Автоматизация с CI/CD через GitHub Actions
+```
+Для автоматизации сборки, тестирования и деплоя проекта используется GitHub Actions.
+Создайте новый репозиторий и добавьте все необходимые переменные среды в secrets.
+Основные возможности:
+1. Автоматическая проверка кода при каждом пуше или pull request.
+2. Запуск тестов для обеспечения качества.
+3. Автоматический деплой на сервер после успешных проверок.
+```
 ## Приложения
 
 1. Приложение materials, в котором описаны модели Course и Lesson. 

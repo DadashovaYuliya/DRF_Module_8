@@ -37,7 +37,6 @@ class Payment(models.Model):
         (TRANSFER, "Перевод на счет"),
     ]
 
-
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
